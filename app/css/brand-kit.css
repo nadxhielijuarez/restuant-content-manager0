@@ -1,0 +1,48 @@
+:root {
+    --background-color-1: #FFFFFF;
+    --highlight-color-1: #A05035;
+    --highlight-color-2: #A05035;
+    --highlight-color-3: #e9dfc6;
+    --highlight-color-4: #b88d6a;
+    --highlight-color-5: #7c563d;
+    --highlight-color-6: #473020;
+
+    --text-color-1: #473020;
+    --text-color-2: #FFFFFF;
+    --text-color-3: #737B4C;
+    --text-color-4: #A05035;
+    --text-color-5: #e9dfc6;
+    --text-color-6: #b88d6a;
+    --text-color-7: #7c563d;
+  }
+
+body{
+    background-color: var(--highlight-color-3);
+}
+
+h1{
+    color: var(--text-color-1);
+    font-family: 'Instrument Sans';
+    font-weight: 500;
+}
+
+
+h2{
+    color: var(--text-color-2);
+    font-family: 'Headland One', serif;
+}
+h3{
+    font-family: 'Instrument Sans';
+}
+
+h4{
+    font-family: 'Handlee', serif;
+}
+
+p{
+    font-family: 'Elms Sans', sans-serif;
+}
+
+button{
+    font-family: 'Inclusive Sans', sans-serif;
+}

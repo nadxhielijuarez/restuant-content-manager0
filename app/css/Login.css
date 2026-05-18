@@ -1,0 +1,21 @@
+.login-page-container{
+    display: flex;
+    justify-content: center;
+    margin: 10%;
+}
+
+.login-page-container button,
+.login-page-container a {
+    background-color: var(--highlight-color-2);
+    height: 3rem;
+    width: 6rem;
+    border-radius: 90px;
+    color: var(--text-color-2);
+    border: none;
+    font-size: 1rem;
+    font-family: 'Instrument Sans';
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

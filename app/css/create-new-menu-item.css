@@ -1,0 +1,78 @@
+/* Form card: no extra chrome */
+.createNewMenuItem-form {
+  width: min(1120px, 100%);
+  max-width: calc((min(1120px, 100%) - 2rem) / 3); /* 2 gaps between 3 cols */
+  margin: 0 auto; /* or align to grid start */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1.7rem;
+  line-height: 1.25;
+  color: var(--text-color-1);
+  background-color: var(--highlight-color-3);
+}
+.createNewMenuItem-field-container{
+  display: flex;
+  margin: 5%;
+}
+
+/* Description & price — match .menuItem-description / .menuItem-price */
+.createNewMenuItem-field {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0.95rem 0 0; /* match .menuItem-description margin */
+  color: var(--text-color-1);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1.7rem;
+  line-height: 1.25;
+}
+
+.createNewMenuItem-description-field {
+  width: 100%;
+  min-height: 6rem;
+  resize: vertical; /* optional: let user drag taller */
+}
+
+.createNewMenuItem-form .menuItem-price.createNewMenuItem-field {
+  margin-top: 0.8rem;
+  font-size: 1.9rem;
+}
+
+/* NEW badge: keep pill, hide default checkbox styling */
+.createNewMenuItem-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.createNewMenuItem-badge input {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Submit — subtle, full width under price */
+.createNewMenuItem-button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1.4px solid var(--text-color-1);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-color-1);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Optional: invisible file picker over image corner */
+.createNewMenuItem-file {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  font-size: 0.85rem;
+  max-width: 45%;
+}

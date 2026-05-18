@@ -1,0 +1,310 @@
+.mainImage-container {
+    width: 100%;
+    height: clamp(30rem, 80vw, 55rem);
+    overflow: hidden;
+  }
+  
+.mainImage-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* or e.g. center 30% to show a higher slice */
+  display: block;
+}
+
+
+.button-row{
+    position: relative;
+    z-index: 3;
+}
+
+.HomePage-button-row-container button,
+.HomePage-button-row-container a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: var(--highlight-color-2);
+    height: 5rem;
+    width: 25rem;
+    border-radius: 90px;
+    color: var(--text-color-2);
+    margin-left: 5%;
+    margin-top: -20%;
+    border: none;
+    font-size: 2rem;
+    font-family: 'Instrument Sans';
+    text-align: center;      /* multi-line text centered */
+    box-sizing: border-box;
+    border-radius: 90px;
+    margin-top: clamp(-4rem, -8vw, -1rem);
+    height: clamp(10rem, 28vw, 5rem);
+    padding: clamp(1rem, 4vw, 2rem);
+    position: relative;
+    z-index: 1;
+}
+
+.heading-container{
+    background-color: var(--highlight-color-5);
+    height: 15rem;
+    margin-top: -2.5%;
+    position: relative;
+    z-index: 1;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 45px;
+    padding: 1rem;
+}
+
+.heading-container h2 {
+    margin: 0;                /* remove margin-top: 5% — it breaks vertical centering */
+    font-size: 4rem;
+    color: var(--text-color-2);
+    position: relative;
+    z-index: 1;
+
+    font-size: clamp(1.35rem, 4.5vw, 4rem);
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Stagger the two buttons if you want */
+  .button-row.scroll-reveal.is-visible button:nth-child(1) { transition-delay: 0s; }
+  .button-row.scroll-reveal.is-visible a:nth-child(2) { transition-delay: 0.2s; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.scroll-reveal {
+    transform: translateY(3rem); /* start below final position */
+    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .scroll-reveal.is-visible {
+    transform: translateY(0);
+  }
+
+
+  .spotlight-item-container {
+    position: relative;        /* anchors the absolute content inside */
+    width: 100%;
+    height: clamp(20rem, 50vw, 55rem);
+    overflow: hidden;
+  }
+  
+  .spotlight-item-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  
+  /* dark gradient so text is readable over the photo */
+  .spotlight-item-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.15) 50%,
+      transparent 100%
+    );
+  }
+  
+  .spotlight-item-content {
+    position: absolute;        /* sits on top of the image */
+    inset: 0;
+    z-index: 1;                /* above the ::after gradient */
+    color: var(--text-color-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2rem;
+
+  }
+  
+  /* "NEW" pill badge */
+  .spotlight-badge {
+    display: inline-block;
+    border: 1.5px solid white;
+    border-radius: 90px;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.6rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  
+  .spotlight-item-content h2 {
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 400;
+    line-height: 1;
+    margin: 0 0 0.5rem;
+  }
+  
+  .spotlight-item-content p {
+    font-size: clamp(0.75rem, 1.2vw, 1rem);
+    opacity: 0.85;
+    margin: 0;
+  }
+
+
+.find-us-preview-content {
+  background-color: var(--highlight-color-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.find-us-preview-content h2 {
+  margin: 0;
+  padding: 1.1rem 1rem 0.5rem;
+  color: var(--text-color-2);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: clamp(2rem, 6vw, 4.2rem);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: capitalize;
+}
+
+.find-us-preview-content p {
+  margin: 0;
+  padding: 0.6rem 1rem 1rem;
+  color: var(--text-color-2);
+  background-color: var(--highlight-color-4);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.find-us-preview-image-wrap {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  min-height: 32rem;
+  background-color: var(--highlight-color-5);
+}
+
+.find-us-preview-image-wrap p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 1rem;
+  color: var(--text-color-2);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.find-us-preview-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* ── mobile  ── */
+
+@media (max-width: 450px){
+    .mainImage-container{
+        height: 30rem;
+        width:100%;
+
+    }
+
+    .button-row{
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0.5rem;
+        margin-top: -5%;
+        margin-left: 0;
+    }
+
+    .button-row button,
+    .button-row a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 4rem;
+        min-height: 4rem;
+        max-height: 4rem;
+        width: 7rem;
+        padding: 0 0.75rem;
+        line-height: 1;
+        margin-left: 0;
+        margin-top: 0;
+        font-size: 1rem;
+        border-radius: 45px;
+    }
+
+    .heading-container{
+        height: 10rem;
+        width: 98%;
+        border-radius: 45px;
+        font-size: 2rem;
+        padding: 1rem;
+        margin-top: -2.5%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center; /* horizontal */
+        align-items: center;     /* vertical */
+        text-align: center;      /* centers wrapped lines */
+    }
+
+    .find-us-preview {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .find-us-preview-image-wrap {
+      min-height: 18rem;
+    }
+}
+
+/* ── tablet  ── */
+@media (max-width: 900px){
+  button{
+    height: 7rem;
+    width: 10rem;
+    font-size: 1rem;
+    border-radius: 45px;
+    margin-left: 2%;
+    margin-top: -5%;
+    padding: 0 0.75rem;
+    line-height: 1;
+  }
+
+  .find-us-preview {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .find-us-preview-image-wrap {
+    min-height: 24rem;
+  }
+}

@@ -1,0 +1,301 @@
+/* About page — layout aligned with First Stop Bagels mockup */
+
+.about-page {
+  /* --highlight-color-6: #4b3d21;
+  --highlight-color-4: #d2c1ac;
+  --about-placeholder: #c8c4bc;
+  --background-color-1: #ffffff; */
+}
+
+.heading-banner {
+  background-color: var(--highlight-color-4);
+  text-align: center;
+  padding: 3rem 1.25rem 3.5rem;
+  color: var(--text-color-5);
+}
+
+.heading-banner {
+  margin: 0 0 1rem;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.heading-banner h2 {
+  margin: 0;
+
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-color-5);
+}
+
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 0;
+}
+
+.recognition-column {
+  background-color: var(--highlight-color-3);
+  padding: 2.5rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-section-label {
+  margin: 0;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-color-5);
+}
+
+.about-section-label--on-dark {
+  color: var(--text-color-5);
+}
+
+.history-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-section .history-line {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--highlight-color-6);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  color: var(--highlight-color-6);
+}
+
+.history-section .history-line:first-child {
+  padding-top: 0;
+}
+
+.history-section .history-year {
+  font-weight: 600;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.history-section .history-description p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.founder-column {
+  background-color: var(--highlight-color-6);
+  min-height: 280px;
+}
+
+.founder-photo-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 320px;
+}
+
+.founder-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  display: block;
+  vertical-align: bottom;
+}
+
+.founder-card {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  background-color: var(--highlight-color-4);
+  padding: 1.25rem 1.5rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0.8;
+}
+
+.founder-badge {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background-color: var(--background-color-1);
+  color: var(--highlight-color-4);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.founder-name {
+  margin: 0.75rem 0 0;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 500;
+  color: var(--text-color-2);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.shop-photo-column {
+  background-color: #1a1a1a;
+  min-height: 280px;
+}
+
+.shop-photo-column img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.contact-column {
+  background-color: var(--highlight-color-2);
+  color: var(--text-color-5);
+  padding: 2.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-rows {
+  margin: 0;
+  flex: 1;
+}
+
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--text-color-5);
+  font-family: 'Elms Sans', 'Instrument Sans', sans-serif;
+  font-size: 0.95rem;
+}
+
+.contact-row:first-of-type {
+  padding-top: 0;
+}
+
+.contact-row dt {
+  margin: 0;
+  font-weight: 500;
+  color: var(--text-color-5);
+}
+
+.contact-row dd {
+  margin: 0;
+  text-align: right;
+  color: var(--text-color-5);
+}
+
+.contact-established {
+  margin: auto 0 0;
+  padding-top: 0.5rem;
+  font-family: 'Headland One', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.about-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 2.5rem 1.5rem 3rem;
+  background-color: var(--highlight-color-4);
+}
+
+.about-gallery-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-gallery-placeholder-img {
+  aspect-ratio: 1;
+  width: 100%;
+  background-color: var(--about-placeholder);
+  border-radius: 2px;
+}
+
+.about-gallery-placeholder-line {
+  height: 10px;
+  background-color: var(--about-placeholder);
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+.about-gallery-placeholder-line--long {
+  width: 88%;
+}
+
+.about-gallery-placeholder-line--short {
+  width: 55%;
+}
+
+@media (max-width: 768px) {
+  .about-split {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-photo-wrap {
+    min-height: 280px;
+  }
+
+  .founder-photo-wrap img {
+    min-height: 280px;
+  }
+
+  .about-gallery {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+.meet-the-team-section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+.meet-the-team-card img{
+
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.team-member-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.team-member-headings{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+

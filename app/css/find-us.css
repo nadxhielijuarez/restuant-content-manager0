@@ -1,0 +1,80 @@
+
+
+.find-us-hero {
+  position: relative;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.find-us-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.find-us-overlay-card {
+  position: relative;
+  z-index: 1;
+  width: min(80%, 880px);
+  background-color: var(--highlight-color-6);
+  padding: 1.25rem 2.5rem;
+}
+
+.find-us-kicker {
+  margin: 0 0 1rem;
+  text-align: center;
+  color: var(--highlight-color-3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.find-us-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+  border-top: 1px solid var(--highlight-color-6);
+  padding: 1rem 0;
+}
+
+.find-us-label {
+  margin: 0;
+  font-weight: 700;
+  color: #f1e5d4;
+}
+
+.find-us-title,
+.find-us-address {
+  margin: 0;
+}
+
+.find-us-title {
+  color: var(--highlight-color-3);
+  font-weight: 700;
+}
+
+.find-us-address {
+  color: #b1795a;
+}
+
+
+
+@media (max-width: 780px) {
+  .find-us-overlay-card {
+    width: calc(100% - 2rem);
+    padding: 1rem 1rem;
+  }
+
+  .find-us-row {
+    grid-template-columns: 1fr;
+  }
+
+  .find-us-footer {
+    grid-template-columns: 1fr;
+  }
+}

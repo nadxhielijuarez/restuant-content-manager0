@@ -1,7 +1,23 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Instrument_Sans, Headland_One, Handlee } from "next/font/google";
+import './css/brand-kit.css';
+import './css/NavBar.css';
+import './css/footer.css';
+import './css/home.css';
+import './css/about-us.css';
+import './css/find-us.css';
 
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
+  subsets: ["latin"],
+});
+const headlandOne = Headland_One({
+  variable: "--font-headland-one",
+  subsets: ["latin"],
+  weight: "400",
+});
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
