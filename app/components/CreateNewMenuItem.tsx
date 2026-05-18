@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import image from '../images/placeholderImage.png';
 import '../css/menu.css';
 import '../css/create-new-menu-item.css';
-import UploadImage from "./uploadImage.tsx";
-import { uploadFiles } from "../lib/upload_thing/upload_thing.tsx";
-import { createMenuItem } from "../lib/menuItems.tsx";
+import UploadImage from "./uploadImage";
+import { uploadFiles } from "../lib/upload_thing/upload_thing";
+import { createMenuItem } from "../lib/menuItems";
 
 type CreateNewMenuItemProps = {
     key?: React.Key;
@@ -49,28 +49,34 @@ type CreateNewMenuItemProps = {
                 return;
               }
             }
-        //   await createMenuItem({
-        //     name,
-        //     price,
-        //     description,
-        //     image: imageUrl,
-        //     new_product: newProduct,
-        //   });
-        console.log("Submitted:", uploadedImageUrl);
-        console.log("Name:", name);
-        console.log("Price:", price);
-        console.log("Description:", description);
-        console.log("New Product:", newProduct);
-          // reset form, onCreated?.(), etc.
+          await createMenuItem({
+            name,
+            price,
+            description,
+            image: uploadedImageUrl ?? null,
+            new_product: newProduct,
+            "out-of-stock": false,
+          });
+
+          setName("");
+          setPrice("");
+          setDescription("");
+          setNewProduct(false);
+          setSelectedImage(null);
+          setError(null);
         } catch (err) {
-            console.error("Submit failed:", err);
-            if (err && typeof err === "object" && "message" in err) {
-              console.error("message:", (err as { message: string }).message);
-            }
-          }
+          console.error("Submit failed:", err);
+          setError(
+            err instanceof Error ? err.message : "Failed to create menu item."
+          );
+        } finally {
+          setIsSubmitting(false);
+          setSubmitting(false);
+        }
       }
     return (
-      <form className="createNewMenuItem-form">
+      <form className="createNewMenuItem-form" onSubmit={handleSubmit}>
+        {error && <p className="createNewMenuItem-error">{error}</p>}
         <div className='createNewMenuItem-imageWrap'>
             <UploadImage selectedFile={selectedImage} onFileChange={setSelectedImage} />
         </div>
@@ -118,7 +124,9 @@ type CreateNewMenuItemProps = {
         </div>
 
 
-        <button className="createNewMenuItem-button" disabled={submitting} onClick={handleSubmit}>Create New Menu Item</button>
+        <button type="submit" className="createNewMenuItem-button" disabled={isSubmitting}>
+          {isSubmitting ? "Creating…" : "Create New Menu Item"}
+        </button>
       </form>
     );
   }

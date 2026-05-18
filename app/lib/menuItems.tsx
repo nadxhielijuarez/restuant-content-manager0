@@ -6,33 +6,58 @@ export const supabase: SupabaseClient = createClient(
   getSupabaseAnonKey()
 );
 
-/** Match your table + columns in Supabase (example: public.menu_items) */
+/** Matches Supabase public."Menu" table columns */
 export type MenuItemRow = {
-  id: number;
+  id?: number;
+  created_at?: string;
   name: string;
   price: string;
   description: string;
   image: string | null;
   new_product: boolean | null;
+  "out-of-stock": boolean | null;
+};
+
+export type CreateMenuItemInput = {
+  name: string;
+  price: string;
+  description: string;
+  image: string | null;
+  new_product?: boolean | null;
+  "out-of-stock"?: boolean | null;
 };
 
 export async function fetchMenuItems(): Promise<MenuItemRow[]> {
   const { data, error } = await supabase
     .from("Menu")
     .select("*")
-    .order("id", { ascending: true });
+    .order("created_at", { ascending: true });
 
   if (error) throw error;
   return data ?? [];
 }
 
-export async function createMenuItem(menuItem: MenuItemRow): Promise<MenuItemRow> {
-  const { data, error } = await supabase
-    .from("Menu")
-    .insert(menuItem)
-    .select()
-    .single();
+/** Inserts via server API so admin writes bypass Supabase RLS. */
+export async function createMenuItem(
+  menuItem: CreateMenuItemInput
+): Promise<MenuItemRow> {
+  const response = await fetch("/api/menu", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(menuItem),
+  });
 
-  if (error) throw error;
-  return data;
+  const payload = (await response.json().catch(() => ({}))) as
+    | MenuItemRow
+    | { error?: string };
+
+  if (!response.ok) {
+    throw new Error(
+      "error" in payload && payload.error
+        ? payload.error
+        : "Failed to create menu item."
+    );
+  }
+
+  return payload as MenuItemRow;
 }   

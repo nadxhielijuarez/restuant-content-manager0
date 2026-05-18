@@ -13,11 +13,12 @@ export function getSupabaseUrl(): string {
 
 export function getSupabaseAnonKey(): string {
   const key =
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
     process.env.REACT_APP_SUPABASE_ANON_KEY;
   if (!key) {
     throw new Error(
-      "Missing NEXT_PUBLIC_SUPABASE_ANON_KEY (set it in .env.local)"
+      "Missing NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY (set it in .env.local)"
     );
   }
   return key;
