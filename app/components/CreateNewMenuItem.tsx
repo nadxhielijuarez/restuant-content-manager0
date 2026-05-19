@@ -4,22 +4,13 @@ import '../css/menu.css';
 import '../css/create-new-menu-item.css';
 import UploadImage from "./uploadImage";
 import { uploadFiles } from "../lib/upload_thing/upload_thing";
-import { createMenuItem } from "../lib/menuItems";
+import { createMenuItem } from "../lib/postgres_supabase/menuItems";
 
 type CreateNewMenuItemProps = {
-    key?: React.Key;
-    image: string;
-    name: string;
-    price: string;
-    description: string;
-    newProduct?: boolean;
-    id?: number;
-  };
+  onCreated?: () => void;
+};
 
-
-
-
-  export default function CreateNewMenuItem() {
+export default function CreateNewMenuItem({ onCreated }: CreateNewMenuItemProps) {
     const [submitting, setSubmitting] = useState(false);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [name, setName] = useState("");
@@ -64,6 +55,7 @@ type CreateNewMenuItemProps = {
           setNewProduct(false);
           setSelectedImage(null);
           setError(null);
+          onCreated?.();
         } catch (err) {
           console.error("Submit failed:", err);
           setError(

@@ -55,6 +55,14 @@
   line-height: 1;
 }
 
+.menuItem-card--out-of-stock {
+  opacity: 0.75;
+}
+
+.menuItem-badge--oos {
+  background-color: #888;
+}
+
 .menuItem-description {
   margin: 0.95rem 0 0;
   color: var(--text-color-1);

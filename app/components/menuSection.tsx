@@ -1,55 +1,64 @@
-import React from 'react';
-import MenuItem from './menuItem.tsx';
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import MenuItem from './menuItem';
 import '../css/menu.css';
-import bagel1 from '../images/bagel1.png';
-import bagel2 from '../images/bagel2.png';
-import bagel3 from '../images/bagel3.png';
-
-/* Dummy data, this will be tied to a postgres DB where admin will update/delete/insert new items */
-
-const menuItems = [
-    {
-        image: bagel1,
-        name: 'Everything Bagel',
-        price: '$10.99',
-        description: 'The savory choice. Bite into happniess.',
-        newProduct: true,
-        id: 1
-    },
-    
-    {
-        image: bagel2,
-        name: 'Plain',
-        price: '$12.99',
-        description: 'An honest classic, with avacado, scrammled eggs, and cheddar cheese.',
-        newProduct: false,
-        id: 2
-    },  
-    
-    {
-        image: bagel3,
-        name: 'Plain Jane',
-        price: '$5.99',
-        description: 'Plain bagel with cream cheese. Perfect safe option.',
-        newProduct: false,
-        id: 3
-    },
-]   
+import placeholderImage from '../images/placeholderImage.png';
+import { fetchMenuItems, type MenuItemRow } from '../lib/postgres_supabase/menuItems';
 
 export default function MenuSection() {
+  const [menuItems, setMenuItems] = useState<MenuItemRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchMenuItems().then(setMenuItems)
+      .catch((err) =>
+        setError(err instanceof Error ? err.message : 'Failed to load menu.')
+      )
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
     return (
-        <div className='menuSection-container'>
-            <div className='menuItems-grid'>
-                {menuItems.map((item) => (
-                    <MenuItem key={item.id}
-                    id={item.id} 
-                    image={item.image} 
-                    name={item.name} 
-                    price={item.price} 
-                    description={item.description} 
-                    newProduct={item.newProduct} />
-                ))}
-            </div>
-        </div>
-    )
+      <div className="menuSection-container">
+        <p className="menuSection-status">Loading menu…</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="menuSection-container">
+        <p className="menuSection-status">Could not load menu: {error}</p>
+      </div>
+    );
+  }
+
+  if (menuItems.length === 0) {
+    return (
+      <div className="menuSection-container">
+        <p className="menuSection-status">No menu items yet.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="menuSection-container">
+      <div className="menuItems-grid">
+        {menuItems.map((item, index) => (
+          <MenuItem
+            key={item.id ?? `${item.name}-${index}`}
+            id={item.id}
+            image={item.image ?? placeholderImage}
+            name={item.name}
+            price={item.price}
+            description={item.description}
+            newProduct={item.new_product ?? false}
+            outOfStock={item['out-of-stock'] === true}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }

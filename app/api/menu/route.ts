@@ -1,7 +1,29 @@
 import { NextResponse } from "next/server";
 import { requireAdminUser } from "@/app/lib/auth/requireAdmin";
-import type { CreateMenuItemInput } from "@/app/lib/menuItems";
+import type { CreateMenuItemInput } from "@/app/lib/postgres_supabase/menuItems";
 import { createAdminSupabaseClient } from "@/lib/supabase/admin";
+
+export async function GET() {
+  let supabase;
+  try {
+    supabase = createAdminSupabaseClient();
+  } catch (configError) {
+    const message =
+      configError instanceof Error ? configError.message : "Supabase not configured.";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+
+  const { data, error } = await supabase
+    .from("Menu")
+    .select("*")
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data ?? []);
+}
 
 export async function POST(request: Request) {
   try {
@@ -32,21 +54,12 @@ export async function POST(request: Request) {
   let supabase;
   try {
     supabase = createAdminSupabaseClient();
-    console.log("supabase: " + supabase);
   } catch (configError) {
-    console.log("configError: " + configError);
     const message =
       configError instanceof Error ? configError.message : "Supabase not configured.";
-    console.log("message: " + message);
     return NextResponse.json({ error: message }, { status: 500 });
   }
-  console.log("supabase: " + supabase);
-  console.log("name: " + name);
-  console.log("price: " + price);
-  console.log("description: " + description);
-  console.log("image: " + image);
-  console.log("new_product: " + new_product);
-  console.log("outOfStock: " + outOfStock);
+
   const { data, error } = await supabase
     .from("Menu")
     .insert({
