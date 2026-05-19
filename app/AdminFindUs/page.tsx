@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import bagelStand from '../images/bagel-stand.png';
 import { imageSrc } from '../lib/imageSrc';
+import CreateNewFindUsRow from '../components/CreateNewFindUsRow';
 import FindUsRow from '../components/findUsRow';
 import {
   fetchFindUsRows,
@@ -12,13 +13,17 @@ import {
 } from '../lib/postgres_supabase/findUsRows';
 import '../css/brand-kit.css';
 import '../css/find-us.css';
+import '../css/create-new-find-us.css';
 
-export default function FindUsPage(): React.ReactElement {
+export default function AdminFindUsPage(): React.ReactElement {
   const [rows, setRows] = useState<FindUsRowData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
-  useEffect(() => {
+  const loadRows = useCallback(() => {
+    setLoading(true);
+    setError(null);
     fetchFindUsRows()
       .then(setRows)
       .catch((err) =>
@@ -27,17 +32,25 @@ export default function FindUsPage(): React.ReactElement {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    loadRows();
+  }, [loadRows, refreshKey]);
+
+  function handleRowCreated() {
+    setRefreshKey((key) => key + 1);
+  }
+
   return (
     <div className="find-us-page">
       <section className="find-us-hero">
         <img src={imageSrc(bagelStand)} alt="First Stop Bagels stand" />
         <div className="find-us-overlay-card">
-          <p className="find-us-kicker">WHERE TO FIND US</p>
+          <p className="find-us-kicker">WHERE TO FIND US (ADMIN)</p>
 
           {loading && <p className="find-us-status">Loading…</p>}
           {error && <p className="find-us-status">{error}</p>}
           {!loading && !error && rows.length === 0 && (
-            <p className="find-us-status">No upcoming locations yet.</p>
+            <p className="find-us-status">No locations yet. Add one below.</p>
           )}
           {rows.map((row) => (
             <FindUsRow
@@ -48,6 +61,7 @@ export default function FindUsPage(): React.ReactElement {
               address={row.market_address}
             />
           ))}
+          <CreateNewFindUsRow onCreated={handleRowCreated} />
         </div>
       </section>
     </div>

@@ -1,6 +1,4 @@
-import { imageSrc } from "../lib/imageSrc";
 import React from 'react';
-import bagelStand from '../images/bagel-stand.png';
 import '../css/find-us.css';
 
 type FindUsRowProps = {

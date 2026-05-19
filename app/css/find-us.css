@@ -24,6 +24,11 @@
   padding: 1.25rem 2.5rem;
 }
 
+.find-us-status {
+  color: var(--highlight-color-3);
+  margin: 0.5rem 0;
+}
+
 .find-us-kicker {
   margin: 0 0 1rem;
   text-align: center;

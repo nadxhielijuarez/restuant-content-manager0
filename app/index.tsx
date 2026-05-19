@@ -10,7 +10,7 @@ import HomePage from './HomePage/page.tsx';
 import AboutUsPage from './AboutUs/page.tsx';
 import FindUsPage from './FindUs/page.tsx';
 import Footer from './components/footer.tsx';
-import LoginPage from './Login/page.js';
+import LoginPage from './Login/page.tsx';
 import AdminMenuPage from './AdminMenu/page.js';
 import './css/footer.css';
 import './css/brand-kit.css';
@@ -33,7 +33,7 @@ root.render(
         <Route path="/" element={<HomePage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
         <Route path="/FindUs" element={<FindUsPage />} />
-        <Route path="/Login" element={<LoginPage />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/AdminMenu" element={<AdminMenuPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
