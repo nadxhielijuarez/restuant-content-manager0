@@ -10,8 +10,8 @@ import HomePage from './HomePage/page.tsx';
 import AboutUsPage from './AboutUs/page.tsx';
 import FindUsPage from './FindUs/page.tsx';
 import Footer from './components/footer.tsx';
-import LoginPage from './LoginPage/page.tsx';
-import AdminMenuPage from './AdminMenuPage/page.tsx';
+import LoginPage from './Login/page.js';
+import AdminMenuPage from './AdminMenu/page.js';
 import './css/footer.css';
 import './css/brand-kit.css';
 
