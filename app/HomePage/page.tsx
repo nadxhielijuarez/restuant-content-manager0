@@ -65,7 +65,7 @@ export default function HomePage(): React.ReactElement {
         </div>
       </div>
       <div ref={menuSectionRef}>
-        <MenuSection />
+     
       </div>
 
       
@@ -87,7 +87,7 @@ export default function HomePage(): React.ReactElement {
 
       <section>
       <div className="find-us-preview-image-wrap">
-        <p> Some text here.</p>
+        <p> New Shop Opening Soon! </p>
           <img src={imageSrc(SpotlightItem)} alt="Baked dish on a tray" />
         </div>
       </section>

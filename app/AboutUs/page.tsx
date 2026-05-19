@@ -1,10 +1,10 @@
 import React, { JSX } from 'react';
-import HistoryLine from '../components/historyLine.tsx';
+import HistoryLine from '../components/historyLine';
 import ownerImage from '../images/owner.png';
 import bagelStand from '../images/bagel-stand.png';
 import about1 from '../images/about1.png';
 import about2 from '../images/about2.png';
-import MeetTheTeamCard from '../components/meetTheTeamCard.tsx';
+import MeetTheTeamCard from '../components/meetTheTeamCard';
 import teamMemberPlaceholder from '../images/teammember-placeholder.png';
 import { imageSrc } from '../lib/imageSrc';
 import '../css/about-us.css';

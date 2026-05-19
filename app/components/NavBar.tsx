@@ -1,6 +1,6 @@
 import React from 'react';
-import BrandHeading from './brandHeading.tsx';
-import SquareNavBarLinks from './squareNavBarLinks.tsx';
+import BrandHeading from './brandHeading';
+import SquareNavBarLinks from './squareNavBarLinks';
 import '../css/brand-kit.css';
 import '../css/NavBar.css';
 
