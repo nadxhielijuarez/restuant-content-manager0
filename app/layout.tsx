@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
+ 
 export const metadata: Metadata = {
   title: "First Stop Bagels",
   description: "Your first stop for bagels",

@@ -65,7 +65,7 @@ export default function HomePage(): React.ReactElement {
         </div>
       </div>
       <div ref={menuSectionRef}>
-     
+        <MenuSection />
       </div>
 
       
